@@ -10,7 +10,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './examples/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -23,7 +23,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('examples'),
     },
     symlinks: false
   },
@@ -70,7 +70,12 @@ module.exports = {
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
+        },
+      },
+      {
+        test: /\.less$/,
+        loader: 'less-loader',
+        include: [resolve('src'), resolve('test')]
       }
     ]
   }

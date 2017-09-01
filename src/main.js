@@ -1,15 +1,29 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Icon from './components/icon'
+import Card from './components/card'
+import Button from './components/button'
+import Breadcrumb from './components/breadcrumb'
+import Alert from './components/alert'
+import BackTop from './components/back-top'
 
-Vue.config.productionTip = false
+const ikaros = {
+  Icon,
+  Card,
+  Button,
+  Breadcrumb,
+  BreadcrumbItem: Breadcrumb.item,
+  Alert,
+  BackTop
+}
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
+const install = function (Vue, opts) {
+  Object.keys(ikaros).forEach((key) => {
+    Vue.component(key, ikaros[key])
+  })
+}
+
+// auto install
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
+export default Object.assign(ikaros, {install})
