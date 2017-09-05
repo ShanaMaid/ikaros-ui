@@ -42,16 +42,22 @@
     </div>
     <div class="right">
 			<div class="md">1</div>
-			<div class="mobile">2</div>
+			<div class="mobile">
+				<phone-show url="https://mobile.ant.design/kitchen-sink/components/popup?lang=zh-CN#popup-demo-0"/>
+
+			</div>
     </div>
   </div>
 </template>
 <script>
 import ListItem from '../components/itemSelected.vue'
+import Phone from '../components/phone.vue'
+
 export default {
 		name: 'Docs',
 		components: {
-			'list-item': ListItem
+			'list-item': ListItem,
+			'phone-show': Phone
 		}
 }
 </script>
@@ -75,17 +81,16 @@ export default {
 	width: 80%;
 	flex-grow: 1;
 	display: flex;
+	padding: 20px;
 }
 
 .md {
 	width: calc(100% - 360px);
-	padding: 20px;
 }
 
 .mobile {
 	width: 360px;
 	height: 620px;
-	background-color: red;
 }
 
 .title {
