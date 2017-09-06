@@ -21,7 +21,7 @@
 						<list-item to="" name="dialog（消息框）" />
 						<list-item to="" name="gallery（图片轮播）" />
 						<list-item to="" name="grid（栅格）" />
-						<list-item to="" name="icon（图标）" />
+						<list-item to="icon" name="icon（图标）" />
 						<list-item to="" name="input（输入表单）" />
 						<list-item to="" name="list（列表）" />
 						<list-item to="" name="mask（遮罩蒙版）" />
@@ -41,23 +41,50 @@
 			</ul>
     </div>
     <div class="right">
-			<div class="md">1</div>
-			<div class="mobile">
-				<phone-show url="https://mobile.ant.design/kitchen-sink/components/popup?lang=zh-CN#popup-demo-0"/>
-
+			<div class="md">
+				<markdown-box :text="text"/>
 			</div>
+			<div class="mobile" v-if="showPhone">
+				<phone-show :url="name"/>
+			</div>
+			<!-- https://material.io/icons/ -->
+
     </div>
   </div>
 </template>
 <script>
 import ListItem from '../components/itemSelected.vue'
 import Phone from '../components/phone.vue'
-
+import Markdown from '../components/markdownElement.vue'
+import Description from './views/des.md'
+const text = {
+	des: Description,
+}
 export default {
 		name: 'Docs',
 		components: {
 			'list-item': ListItem,
-			'phone-show': Phone
+			'phone-show': Phone,
+			'markdown-box': Markdown
+		},
+		data () {
+			return {
+				'des': Description
+			}
+		},
+		computed: {
+			name () {
+				return `${window.location.origin}/#/phone/${this.$route.name}`
+			},
+			showPhone () {
+				let temp = new Set(['des'])
+				return !temp.has(this.$route.name)
+			},
+			text () {
+				let temp = text[this.$route.name] ? text[this.$route.name] : ''
+				console.log(text)
+				return temp
+			}
 		}
 }
 </script>
@@ -86,6 +113,7 @@ export default {
 
 .md {
 	width: calc(100% - 360px);
+	flex-grow: 1;
 }
 
 .mobile {

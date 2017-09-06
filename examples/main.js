@@ -5,8 +5,11 @@ import App from './App'
 import router from './router'
 import './assets/normal.css'
 import './assets/common.css'
+import ikaros from '../src/main.js'
 
 Vue.config.productionTip = false
+
+Vue.use(ikaros)
 
 /* eslint-disable no-new */
 new Vue({

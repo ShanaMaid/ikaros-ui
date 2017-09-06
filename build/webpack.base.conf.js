@@ -76,7 +76,11 @@ module.exports = {
         test: /\.less$/,
         loader: 'less-loader',
         include: [resolve('src'), resolve('test')]
-      }
+			},
+			{
+        test: /\.md$/,
+        loader: 'raw-loader'
+      },
     ]
   }
 }

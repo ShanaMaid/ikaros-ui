@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="flag">
     <div class="top">
       <div class="nav">
         <h1 class="title">IKAROS UI</h1>
@@ -15,16 +15,24 @@
     <div class="child">
       <router-view/>
     </div>
-
+  </div>
+  <div v-else>
+  	<router-view/>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'app'
+	name: 'app',
+	computed: {
+		flag () {
+			return this.$route.fullPath.match('phone') === null
+		}
+	}
 }
 </script>
-
+<style lang="less">
+@import '../src/styles/index.less';
+</style>
 <style lang="less" scoped>
 #app {
   background-color: #dddddd;
@@ -50,7 +58,8 @@ export default {
   font-size: 25px;
   color: white;
   float: left;
-  font-weight: bold;
+	font-weight: bold;
+	margin:0;
 }
 
 .link {
@@ -65,3 +74,4 @@ export default {
 }
 
 </style>
+

@@ -1,6 +1,6 @@
 <template>
   <li class="item" :class="active">
-		<router-link to="11212" >
+		<router-link :to="to" >
 			{{name}}
 		</router-link>
 	</li>
