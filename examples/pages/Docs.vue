@@ -12,7 +12,7 @@
 				<li>
 					<h2 class="title">组件</h2>
 					<ul>
-						<list-item to="" name="accordion（折叠面板）" />
+						<!-- <list-item to="" name="accordion（折叠面板）" />
 						<list-item to="" name="actionsheet（操作表）" />
 						<list-item to="" name="badges（数字角标）" />
 						<list-item to="" name="buttons（按钮）" />
@@ -20,9 +20,9 @@
 						<list-item to="" name="checkbox（复选框）" />
 						<list-item to="" name="dialog（消息框）" />
 						<list-item to="" name="gallery（图片轮播）" />
-						<list-item to="" name="grid（栅格）" />
+						<list-item to="" name="grid（栅格）" /> -->
 						<list-item to="icon" name="icon（图标）" />
-						<list-item to="" name="input（输入表单）" />
+						<!-- <list-item to="" name="input（输入表单）" />
 						<list-item to="" name="list（列表）" />
 						<list-item to="" name="mask（遮罩蒙版）" />
 						<list-item to="" name="number box（数字输入框）" />
@@ -35,13 +35,14 @@
 						<list-item to="" name="range（滑块）" />
 						<list-item to="" name="scroll（区域滚动）" />
 						<list-item to="" name="slide（轮播组件）" />
-						<list-item to="" name="switch（开关）" />
+						<list-item to="" name="switch（开关）" /> -->
 					</ul>
 				</li>
 			</ul>
     </div>
     <div class="right">
 			<div class="md">
+				<router-view/>
 				<markdown-box :text="text"/>
 			</div>
 			<div class="mobile" v-if="showPhone">
@@ -55,35 +56,20 @@
 <script>
 import ListItem from '../components/itemSelected.vue'
 import Phone from '../components/phone.vue'
-import Markdown from '../components/markdownElement.vue'
-import Description from './views/des.md'
-const text = {
-	des: Description,
-}
+
 export default {
 		name: 'Docs',
 		components: {
 			'list-item': ListItem,
-			'phone-show': Phone,
-			'markdown-box': Markdown
-		},
-		data () {
-			return {
-				'des': Description
-			}
+			'phone-show': Phone
 		},
 		computed: {
 			name () {
 				return `${window.location.origin}/#/phone/${this.$route.name}`
 			},
 			showPhone () {
-				let temp = new Set(['des'])
+				let temp = new Set(['des', 'usage'])
 				return !temp.has(this.$route.name)
-			},
-			text () {
-				let temp = text[this.$route.name] ? text[this.$route.name] : ''
-				console.log(text)
-				return temp
 			}
 		}
 }
@@ -119,6 +105,8 @@ export default {
 .mobile {
 	width: 360px;
 	height: 620px;
+	box-shadow: 5px 5px 10px #999;
+	overflow: hidden;
 }
 
 .title {

@@ -6,7 +6,7 @@ import Alert from './components/alert'
 import BackTop from './components/back-top'
 
 const ikaros = {
-  Icon,
+  'ik-icon': Icon,
   Card,
   Button,
   Breadcrumb,

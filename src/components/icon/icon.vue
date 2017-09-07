@@ -11,7 +11,7 @@ export default {
       required: true
     },
     color: String,
-    size: [String, Number]
+    size: Number
   },
   computed: {
     className () {
@@ -23,7 +23,7 @@ export default {
         style.color = this.color
       }
       if (this.size) {
-        style.fontSize = this.size
+        style.fontSize = `${this.size}px`
       }
       return style
     }

@@ -2,10 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/Index'
 import Docs from '@/pages/Docs'
-import Des from '@/pages/Des'
+import Des from '@/pages/views/des/index.vue'
+import Usage from '@/pages/views/usage/index.vue'
+
+
 import Phone from '@/pages/phone/index.vue'
 import PhoneIndex from '@/pages/phone/index'
-import Icon from '@/pages/phone/icon/index'
+import Icon from '@/pages/phone/icon/index.vue'
+import IconMd from '@/pages/views/icon/index.vue'
 
 Vue.use(Router)
 
@@ -30,7 +34,12 @@ export default new Router({
 				{
 					name: 'icon',
 					path: 'icon',
-					component: Des
+					component: IconMd
+				},
+				{
+					name: 'usage',
+					path: 'usage',
+					component: Usage
 				},
 				{
 					path: '*',
